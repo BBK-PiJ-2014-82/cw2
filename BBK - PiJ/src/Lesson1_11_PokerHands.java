@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Lesson1_11_Poker_Hands {
+public class Lesson1_11_PokerHands {
 
     public static void main(String[] args) {
         
