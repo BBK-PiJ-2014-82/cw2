@@ -14,123 +14,196 @@ public class Lesson1_11_Poker_Hands {
         System.out.println();
         
         String tempRank, tempSuit;
-        int intRank;
-        int rank1, rank2, rank3, rank4, rank5;
+        int intRank, intSuit;
         
-        int Hcount = 0;
-        int Dcount = 0;
-        int Scount = 0;
-        int Ccount = 0;
-        
-        char suit1 = ' ';
-        char suit2 = ' ';
-        char suit3 = ' ';
-        char suit4 = ' ';
-        char suit5 = ' ';
+        boolean[][] deck = new boolean[13][4];
         
         int count = 0;
         
         while (count < 5){
             
-            System.out.println("Please enter rank number " + count+1 + " : ");
+            System.out.print("Please enter rank number " + (count+1) + " : ");
             tempRank = s.nextLine();
             
             switch (tempRank){
                 case "1":
-                    intRank = 1;
+                    intRank = 0;
                     break;
                 case "2":
-                    intRank = 2;
+                    intRank = 1;
                     break;
                 case "3":
-                    intRank = 3;
+                    intRank = 2;
                     break;
                 case "4":
-                    intRank = 4;
+                    intRank = 3;
                     break;
                 case "5":
-                    intRank = 5;
+                    intRank = 4;
                     break;
                 case "6":
-                    intRank = 6;
+                    intRank = 5;
                     break;
                 case "7":
-                    intRank = 7;
+                    intRank = 6;
                     break;
                 case "8":
-                    intRank = 8;
+                    intRank = 7;
                     break;
                 case "9":
-                    intRank = 9;
+                    intRank = 8;
                     break;
                 case "10":
-                    intRank = 10;
+                    intRank = 9;
                     break;
                 case "J":
-                    intRank = 11;
+                    intRank = 10;
                     break;
                 case "Q":
-                    intRank = 12;
+                    intRank = 11;
                     break;
                 case "K":
-                    intRank = 13;
+                    intRank = 12;
                     break;
                 default:
                     System.out.println(tempRank + " is not a valid rank.");
                     continue;
             }
             
-            System.out.println("Please enter suit number " + count+1 + " : ");
+            System.out.print("Please enter suit number " + (count+1) + " : ");
             tempSuit = s.nextLine();
 
             switch (tempSuit){
                 case "H":
-                    Hcount++;
+                    intSuit = 0;
                     break;
                 case "S":
-                    Scount++;
+                    intSuit = 1;
                     break;
                 case "D":
-                    Dcount++;
+                    intSuit = 2;
                     break;
                 case "C":
-                    Ccount++;
+                    intSuit = 3;
                     break;
                 default:
                     System.out.println(tempSuit + "is not a valid suit. Please re-enter your card.");
                     continue;
             }
             
-            switch(count+1){
-                case 1:
-                    rank1 = intRank;
-                    suit1 = tempSuit.charAt(0);
-                case 2:
-                    rank2 = intRank;
-                    suit2 = tempSuit.charAt(0);
-                case 3:
-                    rank3 = intRank;
-                    suit3 = tempSuit.charAt(0);
-                case 4:
-                    rank4 = intRank;
-                    suit4 = tempSuit.charAt(0);
-                case 5:
-                    rank5 = intRank;
-                    suit5 = tempSuit.charAt(0);
+            if(deck[intRank][intSuit] == true){
+                System.out.println("That card has already been selected; pick another.");
+                continue;
+            }
+            else{
+                deck[intRank][intSuit] = true;
             }
             
             count++;
+        }
+        
+        int suitCount;
+        boolean fiveSame = false;
+        
+        for(int i = 0; i < 4; i++){
+            
+            suitCount = 0;
+            
+            for (int j = 0; j < 13; j++){
+                if (deck[j][i]){
+                    suitCount++;
+                }
+                
+                if(suitCount == 5){
+                    fiveSame = true;
+                    break;
+                }
+            }            
+        }
+        
+        boolean countStarted = false;
+        boolean lastLineTrue = false;
+        boolean consecutive = false;
+        
+        int countCons = 0;
+        
+        for(int i = 0; i < 13; i++){
+            for(int j = 0; j < 4; j++){
+                if(!countStarted && deck[i][j] == true){
+                    countStarted = true;
+                    lastLineTrue = true;
+                    break;
+                }
+                else if(countStarted && deck[i][j] == true){
+                    lastLineTrue = true;
+                    break;
+                }
+                else{
+                    lastLineTrue = false;
+                }
+            }
+            if(countStarted && lastLineTrue){
+                countCons++;
+            }
+        }
+        
+        if(countCons == 5){
+            consecutive = true;
+        }
+        
+        int pairCount = 0;
+        int trioCount = 0;
+        int fourCount = 0;
+        int tempCount;
+        
+        for(int i = 0; i < 13; i++){
+            tempCount = 0;
+            
+            for(int j = 0; j < 4; j++){
+                if(deck[i][j]){
+                    tempCount++;
+                }
+            }
+            
+            if(tempCount == 2){
+                pairCount++;
+            }
+            else if(tempCount == 3){
+                trioCount++;
+            }
+            else if(tempCount == 4){
+                fourCount++;
+            }
             
         }
         
-        if(Dcount == 5 || Ccount == 5 || Scount == 5 || Hcount == 5){
-            
+        
+        if(fiveSame && consecutive){
+            System.out.println("Straight flush!");
         }
-        else if(){
+        else if(fourCount == 1){
             System.out.println("Poker!");
         }
-        else if(){
+        else if(trioCount == 1 && pairCount == 1){
             System.out.println("Full house!");
+        }
+        else if(fiveSame){
+            System.out.println("Flush!");
+        }
+        else if(consecutive){
+            System.out.println("Straight!");
+        }
+        else if(trioCount == 1){
+            System.out.println("Three of a kind!");
+        }
+        else if(pairCount == 2){
+            System.out.println("Two pairs!");
+        }
+        else if(pairCount == 1){
+            System.out.println("Pair!");
+        }
+        else{
+            System.out.println("You got a bum deal!");
         }
         
     }
