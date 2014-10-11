@@ -10,7 +10,7 @@ public class Lesson1_11_Poker_Hands {
         System.out.println("You will be asked to enter the rank and suit separately.");
         System.out.println("The rank must be 1 - 10 or J for Jack, Q for Queen, K for King.");
         System.out.println("The suit must be H for Hearts, S for Spades, C for Clubs, D for Diamonds.");
-        System.out.println("Please proceed:");
+        System.out.println("Please proceed: ");
         System.out.println();
         
         String tempRank, tempSuit;
