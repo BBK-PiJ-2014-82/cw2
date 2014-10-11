@@ -11,9 +11,9 @@ public class Lesson_1_8_Maximiser {
         
         System.out.println("Please enter a string of positve integers.");
         System.out.println("Please enter '-1' to end and find the maximum number you entered.");
+        System.out.print("Please enter your first number: ");
         
         while(true){
-            System.out.print("Please enter your first number: ");
             str = s.nextLine();
             temp = Integer.parseInt(str);
             
@@ -25,6 +25,7 @@ public class Lesson_1_8_Maximiser {
                 max = temp;
             }
             
+            System.out.print("Next number: ");
         }
         
         System.out.println("Your maximum number was " + max);
