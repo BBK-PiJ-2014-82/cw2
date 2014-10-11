@@ -11,7 +11,7 @@ public class Lesson_1_9_Going_Up {
         Boolean consecutive = true;
         
         System.out.println("Please enter a string of positve integers.");
-        System.out.println("Please enter '-1' to end and find the maximum number you entered.");
+        System.out.println("Please enter '-1' to end and find whether your list was consecutve and increasing.");
         System.out.print("Please enter your first number: ");
         
         while(true){
