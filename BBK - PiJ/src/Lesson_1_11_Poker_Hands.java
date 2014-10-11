@@ -122,32 +122,37 @@ public class Lesson_1_11_Poker_Hands {
         }
         
         boolean countStarted = false;
-        boolean lastLineTrue = false;
+        boolean thisLineTrue = false;
         boolean consecutive = false;
         
         int countCons = 0;
+        int highestCons = 0;
         
         for(int i = 0; i < 13; i++){
             for(int j = 0; j < 4; j++){
                 if(!countStarted && deck[i][j] == true){
                     countStarted = true;
-                    lastLineTrue = true;
-                    break;
+                    thisLineTrue = true;
                 }
                 else if(countStarted && deck[i][j] == true){
-                    lastLineTrue = true;
-                    break;
-                }
-                else{
-                    lastLineTrue = false;
+                    thisLineTrue = true;
                 }
             }
-            if(countStarted && lastLineTrue){
+            
+            if(countStarted && thisLineTrue){
                 countCons++;
+                if(countCons > highestCons){
+                    highestCons = countCons;
+                }
             }
+            else if(countStarted && !thisLineTrue){
+                countCons = 0;
+            }
+            
+            thisLineTrue = false;
         }
         
-        if(countCons == 5){
+        if(highestCons == 5){
             consecutive = true;
         }
         
