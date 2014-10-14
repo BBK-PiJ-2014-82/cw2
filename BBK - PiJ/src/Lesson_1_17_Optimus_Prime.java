@@ -8,7 +8,7 @@ public class Lesson_1_17_Optimus_Prime {
         
         System.out.println("Please enter a positive integer.");
         System.out.println("I will then tell you the nearest prime number.");
-        System.out.println("Your integer: ");
+        System.out.print("Your integer: ");
         
         boolean isPrime = true;
         boolean isLowPrime = true;
@@ -31,14 +31,14 @@ public class Lesson_1_17_Optimus_Prime {
         else{
             while(!isPrime){
                 
-                for(int i = 2; i < yourInt - countFromInt; i++){
-                    if(yourInt - countFromInt == 0){
+                for(int i = 2; i < (yourInt - countFromInt); i++){
+                    if((yourInt - countFromInt) % i == 0){
                         isLowPrime = false;
                     }
                 }
                 
-                for(int i = 2; i < yourInt + countFromInt; i++){
-                    if(yourInt + countFromInt == 0){
+                for(int i = 2; i < (yourInt + countFromInt); i++){
+                    if((yourInt + countFromInt) % i == 0){
                         isHighPrime = false;
                     }
                 }
@@ -53,6 +53,8 @@ public class Lesson_1_17_Optimus_Prime {
                     break;
                 }
                 countFromInt++;
+                isLowPrime = true;
+                isHighPrime = true;
             }
             
             if(isLowPrime && isHighPrime){
