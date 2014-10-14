@@ -11,6 +11,8 @@ public class Lesson_1_16_Rock_Paper_Scissors {
         
         char play1, play2;
         
+        int difference = Math.abs(player1Score - player2Score);
+        
         String result;
         
         System.out.println("Enter the result of a rock, scissor, paper game.");
@@ -20,9 +22,9 @@ public class Lesson_1_16_Rock_Paper_Scissors {
         System.out.println("'R' is Rock.");
         System.out.println("Here's an example: PR - Paper & Rock.");
         
-        while(player1Score - player2Score < 4 || player2Score - player1Score < 4){
+        while(difference < 4){
             
-            System.out.println("Enter the result: ");
+            System.out.print("Enter the result: ");
             
             result = s.nextLine();
             
@@ -81,6 +83,8 @@ public class Lesson_1_16_Rock_Paper_Scissors {
             else{
                 System.out.println("That is not a valid result.  Please try again.");
             }
+            
+            difference = Math.abs(player1Score - player2Score);
             
         }
         
