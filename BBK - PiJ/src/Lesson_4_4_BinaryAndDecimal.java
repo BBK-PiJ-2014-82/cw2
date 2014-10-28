@@ -42,13 +42,7 @@ public class Lesson_4_4_BinaryAndDecimal {
         double decimal = 0;
         
         for(int i = 0; i < binary.length(); i++){
-            if(i == binary.length()-1){
-                decimal += Character.getNumericValue(binary.charAt(i));
-            }
-            else{
-                decimal = decimal + (Character.getNumericValue(binary.charAt(i))
-                    * Math.pow(2.0, binary.length() - binary.indexOf(i)));
-            }
+            decimal = decimal + (Character.getNumericValue(binary.charAt(i)) * Math.pow(2.0, binary.length() - (i+1)));
         }
         
         System.out.println("The decimal of binary " + binary + " is " + decimal);
@@ -60,16 +54,17 @@ public class Lesson_4_4_BinaryAndDecimal {
         
         String binary = "";
         int decimal = s.nextInt();
+        int temp = decimal;
         
-        while(decimal > 0){
-            double sqrRoot = Math.sqrt(decimal);
+        while(temp > 0){
+            double sqrRoot = Math.sqrt(temp);
             if(sqrRoot%2 == 0){
                 binary += "1";
-                decimal = decimal / 2;
+                temp = temp / 2;
             }
             else{
                 binary += "0";
-                decimal = decimal / 2;
+                temp = temp / 2;
             }
         }
         
