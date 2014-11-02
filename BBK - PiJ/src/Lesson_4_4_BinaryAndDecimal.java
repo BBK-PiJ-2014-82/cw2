@@ -54,17 +54,23 @@ public class Lesson_4_4_BinaryAndDecimal {
         
         String binary = "";
         int decimal = s.nextInt();
-        int temp = decimal;
+        double temp = decimal;
+        int logarithm = (int)Math.sqrt(decimal) + 1;
         
-        while(temp > 0){
-            double sqrRoot = Math.sqrt(temp);
-            if(sqrRoot%2 == 0){
-                binary += "1";
-                temp = temp / 2;
+        System.out.println(logarithm);
+        
+        for(int i = logarithm; i >= 0; i--){
+            if(temp == 1 && i != 0){
+                binary += "0";
+            }
+            else if(Math.pow(2,i) > temp){
+                System.out.println(temp);
+                binary += "0";
             }
             else{
-                binary += "0";
-                temp = temp / 2;
+                System.out.println(temp);
+                binary += "1";
+                temp -= Math.pow(2,i);
             }
         }
         
