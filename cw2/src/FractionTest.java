@@ -19,6 +19,13 @@ public class FractionTest {
 	test(new Fraction(4, -8),new Fraction(1, 2),"error test 5");
 
         // extend with extra tests
+        
+        // test add
+        Fraction i = new Fraction(19,15);
+        Fraction j = new Fraction(3,5);
+        Fraction k = new Fraction(2,3);
+        if(!i.equals(j.add(k))) System.out.println("Add failed");
+        
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
