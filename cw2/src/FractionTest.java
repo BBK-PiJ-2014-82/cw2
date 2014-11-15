@@ -26,6 +26,12 @@ public class FractionTest {
         Fraction k = new Fraction(2,3);
         if(!i.equals(j.add(k))) System.out.println("Add failed");
         
+        // test subtract
+        Fraction l = new Fraction(1,6);
+        Fraction m = new Fraction(2,3);
+        Fraction n = new Fraction(1,2);
+        if(!l.equals(m.subtract(n))) System.out.println("Sub failed");
+        
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
