@@ -32,6 +32,12 @@ public class FractionTest {
         Fraction n = new Fraction(1,2);
         if(!l.equals(m.subtract(n))) System.out.println("Sub failed");
         
+        // test divide
+        Fraction o = new Fraction(6,2);
+        Fraction p = new Fraction(1,2);
+        Fraction q = new Fraction(1,6);
+        if(!o.equals(p.divide(q))) System.out.println("Divide failed");
+        
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
