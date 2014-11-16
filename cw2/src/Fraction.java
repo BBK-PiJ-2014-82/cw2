@@ -18,6 +18,9 @@ public class Fraction {
 
     @Override
     public String toString() {
+        if(getDenominator() == 1){
+            return "" + getNumerator();
+        }
         return "" + getNumerator() + '/' + getDenominator();
     }
 
@@ -93,6 +96,13 @@ public class Fraction {
         int denom = getDenominator();
         if(num < 0) {num = getNumerator()*-1;}
         if(denom < 0){denom = getDenominator()*-1;}
+        return new Fraction(num, denom);
+    }
+    
+    public Fraction negative(){
+        
+        int num = getNumerator()*-1;
+        int denom = getDenominator()*-1;
         return new Fraction(num, denom);
     }
 
