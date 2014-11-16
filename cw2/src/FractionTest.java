@@ -38,10 +38,22 @@ public class FractionTest {
         Fraction q = new Fraction(1,6);
         if(!o.equals(p.divide(q))) System.out.println("Divide failed");
         
-        // test absoluate
-        Fraction r = new Fraction(-3,-7);
-        Fraction s = r.absolute();
-        System.out.println(s.getNumerator() + "," + s.getDenominator());
+        // test absolute
+        Fraction r = new Fraction(-3,7);
+        Fraction s = new Fraction(3,7);
+        if(!s.equals(r.absolute())) System.out.println("Absolute failed");
+        
+        // test negative
+        Fraction t = new Fraction(-3,7);
+        if(!t.equals(r.negative())) System.out.println("Negative failed");
+        Fraction u = r.negative();
+        System.out.println(u.getNumerator() + "," + u.getDenominator());
+        
+        // test toString
+        Fraction v = new Fraction(3, 1);
+        System.out.println(v.toString());
+        System.out.println(u.toString());
+    
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
