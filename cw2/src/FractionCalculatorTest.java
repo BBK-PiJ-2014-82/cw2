@@ -8,16 +8,17 @@ public class FractionCalculatorTest {
         Fraction a = new Fraction(1,2);
         Fraction b1 = calc.evaluate(a, "2/3");
         Fraction b2 = calc.evaluate(a, "2/3");
-        test(b1, b2, "Fraction pass not successful: ", "Fraction pass successfull: ");
+        test(b1, b2, "Fraction pass failed: ", "Fraction pass successful: ");
         
         // test whole number is converted into fraction with denominator 1
-        Fraction c = calc.evaluate(a, "2/1");
-        Fraction d = calc.evaluate(a, "2");
-        test(c, d, "Whole number conversion failed: ", "Whole number conversion successful: ");
+        Fraction c1 = calc.evaluate(a, "2/1");
+        Fraction c2 = calc.evaluate(a, "2");
+        test(c1, c2, "Whole number conversion failed: ", "Whole number conversion successful: ");
         
-        // test addition
-        //Fraction c = calc.evaluate(a, "+ 2/4");
-        //System.out.println("Fraction c is equal to " + c);
+        // test addition ignoring a
+        Fraction d1 = calc.evaluate(a, "1/2 + 1/4 + 1/8");
+        Fraction d2 = new Fraction(7, 8);
+        test(d1, d2, "Addition failed: ", "Addition successful: ");
         
     }
     
