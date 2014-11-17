@@ -22,9 +22,10 @@ public class FractionCalculator {
         System.out.println("Welcome to James Hills' Fraction Calculator.");
         System.out.println("Please enter a calculation below:");
         
-        // obtain input
+        // obtain intital input
         input = scan.nextLine();
         
+        // take commands from the user and display the result
         do  {
             
             value = evaluate(value, input);
@@ -33,6 +34,7 @@ public class FractionCalculator {
             
             } while (!input.equalsIgnoreCase("Goodbye"));
         
+        // closing
         System.out.println();
         System.out.println("Fraction Calculator now closing.");
     }
@@ -40,14 +42,15 @@ public class FractionCalculator {
     public Fraction evaluate(Fraction fraction, String inputString) {
         
         // create variables
-        char operator;
+        String operator = "";
         Fraction current = fraction;
         String item;
         
         // create Scanner
         Scanner s1 = new Scanner(inputString);
+        s1.useDelimiter(" ");
         
-        //String str = System.console().readLine();
+        // try doing this : String str = System.console().readLine();
         
         // parse the string and perform calculations
         while(s1.hasNext()){
@@ -55,11 +58,17 @@ public class FractionCalculator {
             
             // parse numerals
             if(Character.isDigit(item.charAt(0))){
-                current = parseNumerals(item);
+                switch(operator){
+                    case "+":
+                        current = current.add(parseNumerals(item));
+                        operator = "";
+                    default:
+                        // current = parseNumerals(item);
+                }
             }
             else{
                 switch(item){
-                    case "+": operator = item.charAt(0);
+                    case "+": operator = item;
                 }
             }
         }
@@ -87,5 +96,4 @@ public class FractionCalculator {
             return new Fraction(num, 1);
         }
     }
-
 }
