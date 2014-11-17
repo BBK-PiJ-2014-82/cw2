@@ -27,7 +27,7 @@ public class FractionCalculator {
         
         do  {
             
-            evaluate(value, input);
+            value = evaluate(value, input);
             System.out.println(" = " + value.toString());
             input = scan.nextLine();
             
