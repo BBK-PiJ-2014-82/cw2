@@ -28,9 +28,14 @@ public class FractionCalculator {
                 s2.useDelimiter("/");
                 
                 num = s2.nextInt();
-                denom = s2.nextInt();
                 
-                current = new Fraction(num, denom);
+                if(s2.hasNext()){
+                    denom = s2.nextInt();
+                    current = new Fraction(num, denom);
+                }
+                else{
+                    current = new Fraction(num, 1);
+                }
                 
             }
         }
