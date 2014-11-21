@@ -25,6 +25,10 @@ public class FractionCalculatorTest {
         Fraction e2 = new Fraction(7, 8);
         test(e1, e2, "Addition incl. passed fraction failed: ", "Addition incl. passed fraction successful: ");
         
+        // test subtraction ignoring a
+        Fraction f1 = calc.evaluate(a, "- 1/4 - 1/8");
+        Fraction f2 = new Fraction(1, 8);
+        test(f1, f2, "Subtraction failed: ", "Subtraction successful: ");
     }
     
     static void test(Fraction f1, Fraction f2, String msg1, String msg2){
