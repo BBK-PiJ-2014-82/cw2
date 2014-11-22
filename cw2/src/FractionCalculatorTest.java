@@ -26,9 +26,14 @@ public class FractionCalculatorTest {
         test(e1, e2, "Addition incl. passed fraction failed: ", "Addition incl. passed fraction successful: ");
         
         // test subtraction ignoring a
-        Fraction f1 = calc.evaluate(a, "- 1/4 - 1/8");
-        Fraction f2 = new Fraction(1, 8);
+        Fraction f1 = calc.evaluate(a, "1/2 - 1/4");
+        Fraction f2 = new Fraction(1, 4);
         test(f1, f2, "Subtraction failed: ", "Subtraction successful: ");
+        
+        // test subtraction ignoring a
+        Fraction g1 = calc.evaluate(a, "- 1/4 - 1/8");
+        Fraction g2 = new Fraction(1, 8);
+        test(g1, g2, "Subtraction incl. passed fraction failed: ", "Subtraction incl. passed fraction successful: ");
     }
     
     static void test(Fraction f1, Fraction f2, String msg1, String msg2){
