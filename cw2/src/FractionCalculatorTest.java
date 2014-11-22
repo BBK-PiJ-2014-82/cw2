@@ -62,6 +62,9 @@ public class FractionCalculatorTest {
         Fraction l3 = calc.evaluate(a, " + 1/2 1/4");
         Fraction l4 = new Fraction(1, 4);
         test(l3, l4, "New fraction replacement failed: ", "New fraction replacement successful: ");
+        Fraction l5 = calc.evaluate(a, " 4");
+        Fraction l6 = new Fraction(4, 1);
+        test(l5, l6, "New fraction replacement failed: ", "New fraction replacement successful: ");
         
     }
     
