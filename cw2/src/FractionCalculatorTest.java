@@ -44,6 +44,16 @@ public class FractionCalculatorTest {
         Fraction i1 = calc.evaluate(a, "* 1/2");
         Fraction i2 = new Fraction(1, 4);
         test(i1, i2, "Multiplication incl. passed fraction failed: ", "Multiplication incl. passed fraction successful: ");
+        
+        // test division ignoring a
+        Fraction j1 = calc.evaluate(a, "1/2 / 3/4");
+        Fraction j2 = new Fraction(4, 6);
+        test(j1, j2, "Division failed: ", "Division successful: ");
+        
+        // test multiplication including a
+        Fraction k1 = calc.evaluate(a, " / 3/4");
+        Fraction k2 = new Fraction(4, 6);
+        test(k1, k2, "Division incl. passed fraction failed: ", "Division incl. passed fraction successful: ");
     }
     
     static void test(Fraction f1, Fraction f2, String msg1, String msg2){

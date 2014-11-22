@@ -71,15 +71,21 @@ public class FractionCalculator {
                         current = current.multiply(parseNumerals(item));
                         operator = "";
                         break;
+                    case "/":
+                        current = current.divide(parseNumerals(item));
+                        operator = "";
+                        break;
                     default:
                         // current = parseNumerals(item);
                 }
             }
             else{
+                // check and note the operation
                 switch(item){
                     case "+": operator = item; break;
                     case "-": operator = item; break;
                     case "*": operator = item; break;
+                    case "/": operator = item; break;
                 }
             }
         }
