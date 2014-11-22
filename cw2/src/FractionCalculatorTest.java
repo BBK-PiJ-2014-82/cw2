@@ -66,6 +66,11 @@ public class FractionCalculatorTest {
         Fraction l6 = new Fraction(4, 1);
         test(l5, l6, "New fraction replacement failed: ", "New fraction replacement successful: ");
         
+        // test absolute
+        Fraction m1 = calc.evaluate(a, "-2/3");
+        Fraction m2 = new Fraction (2, 3);
+        test(m1, m2, "Absolute failed: ", "Abolute successful: ");
+        
     }
     
     static void test(Fraction f1, Fraction f2, String msg1, String msg2){

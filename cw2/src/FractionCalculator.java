@@ -45,19 +45,22 @@ public class FractionCalculator {
         String operator = "";
         Fraction current = fraction;
         String item;
-        
-        // create Scanner
-        Scanner s1 = new Scanner(inputString);
-        s1.useDelimiter(" ");
-        
-        // try doing this : String str = System.console().readLine();
+        String delims = "[ ]+";
+        String[] tokens = inputString.split(delims);
+        boolean hasDigit = false;
         
         // parse the string and perform calculations
-        while(s1.hasNext()){
-            item = s1.next();
+        for(int i = 0; i < tokens.length; i++) {
+            item = tokens[i];
+            
+            for(int j = 0; j < item.length(); j++){
+                if(Character.isDigit(item.charAt(j))){
+                    hasDigit = true;
+                }
+            }
             
             // parse numerals
-            if(Character.isDigit(item.charAt(0))){
+            if(hasDigit){
                 switch(operator){
                     case "+":
                         current = current.add(parseNumerals(item));
@@ -78,6 +81,7 @@ public class FractionCalculator {
                     default:
                         current = parseNumerals(item);
                 }
+                hasDigit = false;
             }
             else{
                 // check and note the operation
