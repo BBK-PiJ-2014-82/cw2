@@ -97,20 +97,20 @@ public class FractionCalculator {
         return current;
     }
     
+    // take a string representing a fraction or whole number, determine which,
+    // and output as a Fraction object
     private Fraction parseNumerals(String item){
         // create variables
         int num, denom;
-
-        // create Scanner
-        Scanner s2 = new Scanner(item);
-        s2.useDelimiter("/");
+        String delim = ("[/]");
+        String tokens[] = item.split(delim);
         
         // get 1st integer
-        num = s2.nextInt();
+        num = Integer.valueOf(tokens[0]);
         
-        // check for 2nd integer & return Fraction
-        if(s2.hasNext()){
-            denom = s2.nextInt();
+        // check for 2nd integer & return either the resulting whole number or fraction
+        if(tokens.length > 1){
+            denom = Integer.valueOf(tokens[1]);
             return new Fraction(num, denom);
         }
         else{
