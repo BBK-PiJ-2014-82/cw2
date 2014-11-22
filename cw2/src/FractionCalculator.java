@@ -39,6 +39,7 @@ public class FractionCalculator {
         System.out.println("Fraction Calculator now closing.");
     }
     
+    // Evauluate the input string and return the result as a fraction
     public Fraction evaluate(Fraction fraction, String inputString) {
         
         // create variables
@@ -86,10 +87,21 @@ public class FractionCalculator {
             else{
                 // check and note the operation
                 switch(item){
-                    case "+": operator = item; break;
-                    case "-": operator = item; break;
-                    case "*": operator = item; break;
-                    case "/": operator = item; break;
+                    case "+":
+                    case "-":
+                    case "*":
+                    case "/":
+                        if(operator.equalsIgnoreCase("")){
+                            operator = item;
+                            break;
+                        } else {
+                            System.out.println("Error: two operators in a row.  Calculation reset: ");
+                        }
+                    case "a":
+                    case "A":
+                    case "abs":
+                        current = current.absolute();
+                        break;
                 }
             }
         }
