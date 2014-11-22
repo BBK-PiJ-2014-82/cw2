@@ -67,6 +67,10 @@ public class FractionCalculator {
                         current = current.subtract(parseNumerals(item));
                         operator = "";
                         break;
+                    case "*":
+                        current = current.multiply(parseNumerals(item));
+                        operator = "";
+                        break;
                     default:
                         // current = parseNumerals(item);
                 }
@@ -75,6 +79,7 @@ public class FractionCalculator {
                 switch(item){
                     case "+": operator = item; break;
                     case "-": operator = item; break;
+                    case "*": operator = item; break;
                 }
             }
         }
