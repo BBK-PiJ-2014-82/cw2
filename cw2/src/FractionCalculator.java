@@ -76,7 +76,7 @@ public class FractionCalculator {
                         operator = "";
                         break;
                     default:
-                        // current = parseNumerals(item);
+                        current = parseNumerals(item);
                 }
             }
             else{

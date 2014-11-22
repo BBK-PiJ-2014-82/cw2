@@ -54,6 +54,15 @@ public class FractionCalculatorTest {
         Fraction k1 = calc.evaluate(a, " / 3/4");
         Fraction k2 = new Fraction(4, 6);
         test(k1, k2, "Division incl. passed fraction failed: ", "Division incl. passed fraction successful: ");
+        
+        // test fraction without prior operation replaces previous fraction
+        Fraction l1 = calc.evaluate(a, " 2/3");
+        Fraction l2 = new Fraction(2, 3);
+        test(l1, l2, "New fraction replacement failed: ", "New fraction replacement successful: ");
+        Fraction l3 = calc.evaluate(a, " + 1/2 1/4");
+        Fraction l4 = new Fraction(1, 4);
+        test(l3, l4, "New fraction replacement failed: ", "New fraction replacement successful: ");
+        
     }
     
     static void test(Fraction f1, Fraction f2, String msg1, String msg2){
