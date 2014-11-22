@@ -62,13 +62,19 @@ public class FractionCalculator {
                     case "+":
                         current = current.add(parseNumerals(item));
                         operator = "";
+                        break;
+                    case "-":
+                        current = current.subtract(parseNumerals(item));
+                        operator = "";
+                        break;
                     default:
                         // current = parseNumerals(item);
                 }
             }
             else{
                 switch(item){
-                    case "+": operator = item;
+                    case "+": operator = item; break;
+                    case "-": operator = item; break;
                 }
             }
         }
