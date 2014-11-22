@@ -102,6 +102,11 @@ public class FractionCalculator {
                     case "abs":
                         current = current.absolute();
                         break;
+                    case "n":
+                    case "N":
+                    case "neg":
+                        current = current.negative();
+                        break;
                 }
             }
         }
