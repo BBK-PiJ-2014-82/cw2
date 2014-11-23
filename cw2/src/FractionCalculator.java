@@ -14,36 +14,27 @@ public class FractionCalculator {
         // variables
         String input = "";
         Fraction value = new Fraction(0,1);
-        boolean quit = false;
         
         // create Scanner
         Scanner scan = new Scanner(System.in);
         
         // welcome message
-        System.out.println("Welcome to James Hills' Fraction Calculator.");
+        System.out.println("Welcome to James Hill's Fraction Calculator.");
         System.out.println("Please enter a calculation below:");
         
         // take commands from the user, display the result or exit
-        do  {
+        while(scan.hasNext()){
             input = scan.nextLine();
-            switch(input){
-                case "q":
-                case "Q":
-                case "quit":
-                case "Quit":
-                    quit = true;
-                    break;
-                default:
-                    value = evaluate(value, input);
-                    System.out.println(" = " + value.toString());
-                }
-            } while (!quit);
+            value = evaluate(value, input);
+            System.out.println(" = " + value.toString());
+            }
         
         // closing
         System.out.println("Goodbye.");
     }
     
     // Evauluate the input string and return the result as a fraction
+    // This method can EXIT DIRECTLY from the program
     public Fraction evaluate(Fraction fraction, String inputString) {
         
         // create variables
@@ -99,12 +90,13 @@ public class FractionCalculator {
                             operator = item;
                             break;
                         } else {
-                            System.out.println("Error");
+                            System.out.println("Error : 2 consecutive operators.");
                             return new Fraction(0, 1);
                         }
                     case "a":
                     case "A":
                     case "abs":
+                    case "Abs":
                         current = current.absolute();
                         break;
                     case "n":
@@ -121,6 +113,12 @@ public class FractionCalculator {
                     case "Clear":
                         current = new Fraction(0, 1);
                         break;
+                    case "q":
+                    case "Q":
+                    case "quit":
+                    case "Quit":
+                        System.exit(0);
+                        break;
                     case "":
                         break;
                     default:
@@ -130,7 +128,6 @@ public class FractionCalculator {
                 }
             }
         }
-        
         return current;
     }
     
@@ -145,7 +142,8 @@ public class FractionCalculator {
         // get 1st integer
         num = Integer.valueOf(tokens[0]);
         
-        // check for 2nd integer & return either the resulting whole number or fraction
+        // check for 2nd integer & return either the resulting whole number
+        // or fraction
         if(tokens.length > 1){
             denom = Integer.valueOf(tokens[1]);
             return new Fraction(num, denom);
