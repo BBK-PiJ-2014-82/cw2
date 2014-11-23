@@ -121,6 +121,8 @@ public class FractionCalculator {
                     case "Clear":
                         current = new Fraction(0, 1);
                         break;
+                    case "":
+                        break;
                     default:
                         System.out.println("Error");
                         operator = "";
