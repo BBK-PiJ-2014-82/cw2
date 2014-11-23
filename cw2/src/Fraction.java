@@ -90,7 +90,7 @@ public class Fraction {
         return new Fraction(num, denom);
     }
     
-    public Fraction absolute(){
+    public Fraction absValue(){
         
         int num = getNumerator();
         int denom = getDenominator();
@@ -99,7 +99,7 @@ public class Fraction {
         return new Fraction(num, denom);
     }
     
-    public Fraction negative(){
+    public Fraction negate(){
         
         int num = getNumerator()*-1;
         int denom = getDenominator()*-1;
