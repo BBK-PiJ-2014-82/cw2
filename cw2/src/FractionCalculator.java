@@ -33,8 +33,11 @@ public class FractionCalculator {
         System.out.println("Goodbye.");
     }
     
-    // Evauluate the input string and return the result as a fraction
-    // This method can EXIT DIRECTLY from the program
+    // Evauluate the input string and return the result as a fraction.
+    // This method can TERMINATE the program (this was necessary because ...
+    // the specification requires an 'Exit from program' resulting from ...
+    // 'q', 'Q', 'quit' etc. and these items can appear anywhere in an input ...
+    // line according to the spec.)
     public Fraction evaluate(Fraction fraction, String inputString) {
         
         // create variables
@@ -80,7 +83,7 @@ public class FractionCalculator {
                 hasDigit = false;
             }
             else{
-                // check and note the operation
+                // check and note the operation or respond to other commands
                 switch(item){
                     case "+":
                     case "-":
@@ -97,7 +100,7 @@ public class FractionCalculator {
                     case "A":
                     case "abs":
                     case "Abs":
-                        current = current.absolute();
+                        current = current.absValue();
                         break;
                     case "n":
                     case "N":
@@ -105,7 +108,7 @@ public class FractionCalculator {
                     case "Neg":
                     case "negative":
                     case "Negative":
-                        current = current.negative();
+                        current = current.negate();
                         break;
                     case "c":
                     case "C":
@@ -117,13 +120,13 @@ public class FractionCalculator {
                     case "Q":
                     case "quit":
                     case "Quit":
+                        System.out.println("Quit command entered. Goodbye");
                         System.exit(0);
                         break;
                     case "":
                         break;
                     default:
                         System.out.println("Error");
-                        operator = "";
                         return new Fraction(0, 1);
                 }
             }
