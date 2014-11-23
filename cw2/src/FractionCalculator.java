@@ -13,7 +13,8 @@ public class FractionCalculator {
         
         // variables
         String input = "";
-        Fraction value = new Fraction(1,1);
+        Fraction value = new Fraction(0,1);
+        boolean quit = false;
         
         // create Scanner
         Scanner scan = new Scanner(System.in);
@@ -22,21 +23,24 @@ public class FractionCalculator {
         System.out.println("Welcome to James Hills' Fraction Calculator.");
         System.out.println("Please enter a calculation below:");
         
-        // obtain intital input
-        input = scan.nextLine();
-        
-        // take commands from the user and display the result
+        // take commands from the user, display the result or exit
         do  {
-            
-            value = evaluate(value, input);
-            System.out.println(" = " + value.toString());
             input = scan.nextLine();
-            
-            } while (!input.equalsIgnoreCase("Goodbye"));
+            switch(input){
+                case "q":
+                case "Q":
+                case "quit":
+                case "Quit":
+                    quit = true;
+                    break;
+                default:
+                    value = evaluate(value, input);
+                    System.out.println(" = " + value.toString());
+                }
+            } while (!quit);
         
         // closing
-        System.out.println();
-        System.out.println("Fraction Calculator now closing.");
+        System.out.println("Goodbye.");
     }
     
     // Evauluate the input string and return the result as a fraction
@@ -95,7 +99,8 @@ public class FractionCalculator {
                             operator = item;
                             break;
                         } else {
-                            System.out.println("Error: two operators in a row.  Calculation reset: ");
+                            System.out.println("Error");
+                            return new Fraction(0, 1);
                         }
                     case "a":
                     case "A":
@@ -105,8 +110,21 @@ public class FractionCalculator {
                     case "n":
                     case "N":
                     case "neg":
+                    case "Neg":
+                    case "negative":
+                    case "Negative":
                         current = current.negative();
                         break;
+                    case "c":
+                    case "C":
+                    case "clear":
+                    case "Clear":
+                        current = new Fraction(0, 1);
+                        break;
+                    default:
+                        System.out.println("Error");
+                        operator = "";
+                        return new Fraction(0, 1);
                 }
             }
         }
