@@ -37,88 +37,128 @@ public class FractionCalculator {
     // This method can TERMINATE the program (this was necessary because ...
     // the specification requires an 'Exit from program' resulting from ...
     // 'q', 'Q', 'quit' etc. and these items can appear anywhere in an input ...
-    // line according to the spec.)
-    public Fraction evaluate(Fraction fraction, String inputString) {
+    // line according to the specification.)
+    public Fraction evaluate(Fraction current, String inputString) {
         
         // create variables
         String operator = "";
-        Fraction current = fraction;
         String item;
         String delims = "[ ]+";
+        Fraction tempFraction = current;
         String[] tokens = inputString.split(delims);
         boolean hasDigit = false;
+        boolean isFraction = false;
         
         // parse the string and perform calculations
         for(int i = 0; i < tokens.length; i++) {
             item = tokens[i];
             
+            // check if there is a digit in the token
             for(int j = 0; j < item.length(); j++){
-                if(Character.isDigit(item.charAt(j))){
-                    hasDigit = true;
-                }
+                if(Character.isDigit(item.charAt(j))){hasDigit = true;}
             }
             
-            // parse numerals
+            // check if this is a fraction & create one if so
             if(hasDigit){
+                // create variables
+                int num, denom;
+                String delim = ("[/]");
+                String parts[] = item.split(delim);
+                
+                // get 1st integer
+                num = Integer.valueOf(parts[0]);
+
+                // check for 2nd integer & return either the resulting
+                // whole number or fraction
+                if(parts.length > 1){
+                    denom = Integer.valueOf(parts[1]);
+                    tempFraction = new Fraction(num, denom);
+                } else {
+                    tempFraction = new Fraction(num, 1);
+                }
+                isFraction = true;
+            }
+            
+            // read the token and perform appropriate operation
+            if(isFraction){
+                // parse numerals
                 switch(operator){
                     case "+":
-                        current = current.add(parseNumerals(item));
+                        current = current.add(tempFraction);
                         operator = "";
                         break;
                     case "-":
-                        current = current.subtract(parseNumerals(item));
+                        current = current.subtract(tempFraction);
                         operator = "";
                         break;
                     case "*":
-                        current = current.multiply(parseNumerals(item));
+                        current = current.multiply(tempFraction);
                         operator = "";
                         break;
                     case "/":
-                        current = current.divide(parseNumerals(item));
+                        current = current.divide(tempFraction);
                         operator = "";
                         break;
                     default:
-                        current = parseNumerals(item);
+                        current = tempFraction;
+                        break;
                 }
                 hasDigit = false;
-            }
-            else{
+                isFraction = false;
+            } else {
                 // check and note the operation or respond to other commands
                 switch(item){
                     case "+":
+                        // no break
                     case "-":
+                        // no break
                     case "*":
+                        // no break
                     case "/":
                         if(operator.equalsIgnoreCase("")){
                             operator = item;
                             break;
                         } else {
-                            System.out.println("Error : 2 consecutive operators.");
+                            System.out.println("Error : 2 consecutive operators. Resetting calculator.");
                             return new Fraction(0, 1);
                         }
                     case "a":
+                        // no break
                     case "A":
+                        // no break
                     case "abs":
+                        // no break
                     case "Abs":
                         current = current.absValue();
                         break;
                     case "n":
+                        // no break
                     case "N":
+                        // no break
                     case "neg":
+                        // no break
                     case "Neg":
+                        // no break
                     case "negative":
+                        // no break
                     case "Negative":
                         current = current.negate();
                         break;
                     case "c":
+                        // no break
                     case "C":
+                        // no break
                     case "clear":
+                        // no break
                     case "Clear":
                         current = new Fraction(0, 1);
                         break;
                     case "q":
+                        // no break
                     case "Q":
+                        // no break
                     case "quit":
+                        // no break
                     case "Quit":
                         System.out.println("Quit command entered. Goodbye");
                         System.exit(0);
@@ -132,27 +172,5 @@ public class FractionCalculator {
             }
         }
         return current;
-    }
-    
-    // take a string representing a fraction or whole number, determine which,
-    // and output as a Fraction object
-    private Fraction parseNumerals(String item){
-        // create variables
-        int num, denom;
-        String delim = ("[/]");
-        String tokens[] = item.split(delim);
-        
-        // get 1st integer
-        num = Integer.valueOf(tokens[0]);
-        
-        // check for 2nd integer & return either the resulting whole number
-        // or fraction
-        if(tokens.length > 1){
-            denom = Integer.valueOf(tokens[1]);
-            return new Fraction(num, denom);
-        }
-        else{
-            return new Fraction(num, 1);
-        }
     }
 }
