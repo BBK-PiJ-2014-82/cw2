@@ -50,8 +50,8 @@ public class FractionCalculatorTest {
         Fraction j2 = new Fraction(4, 6);
         test(j1, j2, "Failed - Division : ", "Successful - Division : ");
         
-        // test multiplication including a
-        Fraction k1 = calc.evaluate(a, " / 3/4");
+        // test division including a
+        Fraction k1 = calc.evaluate(a, "/ 3/4");
         Fraction k2 = new Fraction(4, 6);
         test(k1, k2, "Failed - Division incl. passed fraction : ", "Successful - Division incl. passed fraction : ");
         
@@ -62,7 +62,7 @@ public class FractionCalculatorTest {
         Fraction l3 = calc.evaluate(a, " + 1/2 1/4");
         Fraction l4 = new Fraction(1, 4);
         test(l3, l4, "Failed - New fraction replacement : ", "Successful - New fraction replacement : ");
-        Fraction l5 = calc.evaluate(a, " 4");
+        Fraction l5 = calc.evaluate(a, "4");
         Fraction l6 = new Fraction(4, 1);
         test(l5, l6, "Failed - New fraction replacement : ", "Successful - New fraction replacement : ");
         
@@ -72,8 +72,8 @@ public class FractionCalculatorTest {
         test(m1, m2, "Failed - Absolute : ", "Successful - Abolute : ");
         
         // test negative
-        Fraction n1 = calc.evaluate(a, " n 2/-3");
-        Fraction n2 = new Fraction (-2, 3);
+        Fraction n1 = calc.evaluate(a, "2/3 N");
+        Fraction n2 = new Fraction (-2, -3);
         test(n1, n2, "Failed - Negative : ", "Successful - Negative : ");
         
     }
