@@ -106,7 +106,7 @@ public class FractionCalculator {
                 isFraction = false;
             } else {
                 // check and note the operation or respond to other commands
-                switch(item){
+                switch(item.toLowerCase()){
                     case "+":
                         // no break
                     case "-":
@@ -123,42 +123,24 @@ public class FractionCalculator {
                         }
                     case "a":
                         // no break
-                    case "A":
-                        // no break
                     case "abs":
-                        // no break
-                    case "Abs":
                         current = current.absValue();
                         break;
                     case "n":
                         // no break
-                    case "N":
-                        // no break
                     case "neg":
                         // no break
-                    case "Neg":
-                        // no break
                     case "negative":
-                        // no break
-                    case "Negative":
                         current = current.negate();
                         break;
                     case "c":
                         // no break
-                    case "C":
-                        // no break
                     case "clear":
-                        // no break
-                    case "Clear":
                         current = new Fraction(0, 1);
                         break;
                     case "q":
                         // no break
-                    case "Q":
-                        // no break
                     case "quit":
-                        // no break
-                    case "Quit":
                         scan.close();
                         scan = null;
                         return new Fraction(0, 1);
