@@ -73,7 +73,7 @@ public class FractionCalculatorTest {
         
         // test negative
         Fraction n1 = calc.evaluate(a, "2/3 N");
-        Fraction n2 = new Fraction (-2, -3);
+        Fraction n2 = new Fraction (-2, 3);
         test(n1, n2, "Failed - Negative : ", "Successful - Negative : ");
         
     }
