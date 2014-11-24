@@ -87,10 +87,8 @@ public class Fraction {
     }
     
     public Fraction absValue(){
-        int num = getNumerator();
-        int denom = getDenominator();
-        if(num < 0) {num = getNumerator()*-1;}
-        if(denom < 0){denom = getDenominator()*-1;}
+        int num = Math.abs(getNumerator());
+        int denom = Math.abs(getDenominator());
         return new Fraction(num, denom);
     }
     
