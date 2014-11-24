@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class FractionCalculator {
+    private Scanner scan;
     
     public FractionCalculator(){}
     
@@ -16,28 +17,26 @@ public class FractionCalculator {
         Fraction value = new Fraction(0,1);
         
         // create Scanner
-        Scanner scan = new Scanner(System.in);
+        scan = new Scanner(System.in);
         
         // welcome message
         System.out.println("Welcome to James Hill's Fraction Calculator.");
         System.out.println("Please enter a calculation below:");
         
         // take commands from the user, display the result or exit
-        while(scan.hasNext()){
+        while(scan != null){
             input = scan.nextLine();
             value = evaluate(value, input);
-            System.out.println(" = " + value.toString());
+            if(scan != null){
+                System.out.println(" = " + value.toString());
             }
+        }
         
         // closing
         System.out.println("Goodbye.");
     }
     
     // Evauluate the input string and return the result as a fraction.
-    // This method can TERMINATE the program (this was necessary because ...
-    // the specification requires an 'Exit from program' resulting from ...
-    // 'q', 'Q', 'quit' etc. and these items can appear anywhere in an input ...
-    // line according to the specification.)
     public Fraction evaluate(Fraction current, String inputString) {
         
         // create variables
@@ -76,6 +75,7 @@ public class FractionCalculator {
                 } else {
                     tempFraction = new Fraction(num, 1);
                 }
+                hasDigit = false;
                 isFraction = true;
             }
             
@@ -103,7 +103,6 @@ public class FractionCalculator {
                         current = tempFraction;
                         break;
                 }
-                hasDigit = false;
                 isFraction = false;
             } else {
                 // check and note the operation or respond to other commands
@@ -160,9 +159,9 @@ public class FractionCalculator {
                     case "quit":
                         // no break
                     case "Quit":
-                        System.out.println("Quit command entered. Goodbye");
-                        System.exit(0);
-                        break;
+                        scan.close();
+                        scan = null;
+                        return new Fraction(0, 1);
                     case "":
                         break;
                     default:
