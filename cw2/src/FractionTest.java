@@ -39,12 +39,12 @@ public class FractionTest {
         if(!o.equals(p.divide(q))) System.out.println("Divide failed");
         
         // test absolute
-        Fraction r = new Fraction(4,-8);
+        Fraction r = new Fraction(-4,8);
         Fraction s = new Fraction(4,8);
         if(!s.equals(r.absValue())) System.out.println("Absolute failed");
         
-        // test negative
-        Fraction t = new Fraction(4,-8);
+        // test negate
+        Fraction t = new Fraction(4,8);
         if(!t.equals(r.negate())) System.out.println("Negative failed");
         Fraction u = r.negate();
         System.out.println(u.getNumerator() + "," + u.getDenominator());
